@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .background{
+            width: 750px;
+            height: 480px;
+            background-color: rgb(185, 234, 250);
+            text-align: center;
+
+        }
+        .back{
+            width: 685px;
+            height: 110px;
+            background-color: white;
+
+        }
+        div.box{
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            border-radius: 100px;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+        }
+    </style>
+    <script id="logic">
+           window.onload=function(){
+            //여러개의 class 요소들을 배열변수로 얻는다
+            let box=document.querySelectorAll("div.box");
+            let num =new Array(box.length)
+            for(let i=0;i<box.length;i++)
+                {
+                    num[i]=parseInt(Math.random()*45)+1;//
+                    //중복처리
+                    for(let j=0;j<i;j++)
+                    {
+                        if(num[i]==num[j]){
+                            i--;
+                            break;
+                        }
+                    }
+                }
+            
+            for(let i=0; i<num.length-1; i++)
+            {
+                for(let j=i+1; j<num.length; j++)
+                {
+                    if(num[i]>num[j])
+                    {
+                        let temp;
+                        temp=num[i];
+                        num[i]=num[j];
+                        num[j]=temp;
+                    }
+                }
+            }
+        
+            for(let i=0;i<box.length;i++)
+            {
+                box[i].innerHTML=num[i];
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="background">
+    <div style="margin-bottom: 200px;">1026회 xxxx-xx-xx</div>
+    <div class="back">
+        <div class="box"></div> 
+        <div class="box"></div> 
+        <div class="box"></div> 
+        <div class="box"></div> 
+        <div class="box"></div> 
+    </div>
+    <br style="clear: both;">
+    <div><button id="btn" type="button">로또 숫자 구하기</button></div>
+    <script>
+        document.getElementById("btn").onclick=function(){
+            document.write.valueOf("logic");
+            //document.getElementById("logic").onload
+        }
+
+    </script>
+</div>
+</body>
+</html>
